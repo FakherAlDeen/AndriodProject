@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/Dark"
+        android:icon="@drawable/baseline_auto_awesome_24"
+        android:iconTint="#FFFFFF"
+        android:title="Dark"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/FSize"
+        android:iconTint="#FFFFFF"
+        android:title="change font size"
+        app:showAsAction="never" />
+
+</menu>

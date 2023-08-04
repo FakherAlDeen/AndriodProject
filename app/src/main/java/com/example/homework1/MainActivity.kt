@@ -5,6 +5,9 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -12,6 +15,7 @@ import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 
 
 class MainActivity : AppCompatActivity() {
@@ -185,4 +189,31 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+     val inflater = menuInflater
+     inflater.inflate(R.menu.menu_dark, menu)
+     return super.onCreateOptionsMenu(menu)
+     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.Dark -> {
+                val rootView = findViewById<View>(android.R.id.content)
+                rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.app_background_color_new))
+                return true
+            }
+            R.id.FSize ->{
+                var dialogVar = DialogFragmentText()
+                dialogVar.show(supportFragmentManager, "Size Dialog")
+            }
+            // Handle other menu items similarly
+            else -> return super.onOptionsItemSelected(item)
+        }
+        return true
+    }
+
+    public fun ChangeSizeOfText(size: Float){
+        val TVLyrics = findViewById<TextView>(R.id.Lyrics);
+        TVLyrics.setTextSize(TypedValue.COMPLEX_UNIT_SP,size);
+    }
+
 }
