@@ -1,5 +1,6 @@
 package com.example.homework1
 
+import DBHelper
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -16,190 +17,122 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val spinnerVal : Spinner = findViewById(R.id.spinnerFaye3)
-        val anaNagm = arrayOf(
-            "العمر بيجري سابق السنين",
-            "أنا شاب لكن من جوه عجوز",
-            "عندي جناحات بس محبوس",
-            "مجروح بنزف طموح",
-            "بدمِّي بكتب كلامي وأبوح",
-            "بسرح بتخيل بروح",
-            "بغنِّي ترد فيا الروح",
-            "يمكن ده مش مكاني",
-            "أو الزمن ده مش زماني",
-            "أو أنا؛ موهوم (موهوم)",
-            "يمكن خيالي وداني",
-            "لدنيا أو لعالم تاني",
-            "أو أنا، مجنون",
-            "أو يمكن",
-            "أنا نجم بس ما فيش سما",
-            "عندي جناحات بس ما فيش هوا",
-            "أنا نجم بس ما فيش سما",
-            "عندي جناحات بس ما فيش هوا (هوا)",
-            "وبعدين سامع جوه مني صوتين",
-            "صوت سابقني والتاني قديم",
-            "صوت يدل، وصوت يضل",
-            "صوت يحرر، وصوت يشل",
-            "وبعدين، أرُوح لمين؟",
-            "بحلم ببكرة أنا طول الليل",
-            "يجي النهار وأصطبح",
-            "كل اللي حلمته بيتمسح",
-            "أوقات بحس إني سابق (إني سابق)",
-            "إنتوا عايشين في الماضي وأنا معاه بتخانق (معاه بتخانق)",
-            "مكان أنا شايفه مش هنا",
-            "أحلامي أقوى مني ومكملة",
-            "أنا نجم بس ما فيش سما",
-            "عندي جناحات بس ما فيش هوا",
-            "أنا نجم بس ما فيش سما",
-            "عندي جناحات بس ما فيش هوا (هوا)",
-            "أنا نجم بس ما فيش سما",
-            "عندي جناحات بس ما فيش هوا",
-            "شايف لبعيد بس ما فيش طريق",
-            "عندي حكايات هحكيها لمين وأنا وحيد؟"
-        )
-        val menniLeek = arrayOf(
-            "حبيبي حبيبي حبيبي حبيبي",
-            "مني ليك نظرة لعينيك",
-            "حتقول لك اني بداري غرامي عليك",
-            "مني ليك نظرة لعينيك",
-            "حتقول لك اني بحبك وميتة فيك",
-            "مني ليك نظرة لعينيك",
-            "حتقول لك اني بداري غرامي عليك",
-            "مني ليك نظرة لعينيك",
-            "حتوقل لك اني بحبك بحبك",
-            "قلبي وعيني قالوا لي يا ريت",
-            "لو قلت لي انك حبيت",
-            "قلبي وعيني قالوا لي يا ريت",
-            "حبيبي يلا تعالى لي قولها لي ريح بالي انا",
-            "طول عمرك وانت في بالي ولا غالي غيرك يا انا",
-            "حبيبي تعالى لي قولها لي ريح بالي انا",
-            "وانت في بالي ولا غالي غيرك يا انا",
-            "حبيبي يلا تعالى لي قولها لي ريح بالي انا",
-            "طول عمرك وانت في بالي ولا غالي غيرك يا انا",
-            "حبيبي تعالى لي قولها لي ريح بالي انا",
-            "طول عمرك وانت في بالي ولا غالي غيرك يا انا",
-            "حبيبي يلا تعالى لي قولها لي ريح بالي انا",
-            "طول عمرك وانت في بالي ولا غالي غيرك يا انا"
-        )
-        val wegzBa5t = arrayOf(
-            "عيني منها بشكل جدي (بشكل جدي)",
-            "وتقيلة مش تقلانة، اتبخر سحري (عيني مليانة منها)",
-            "ومش باجي على بالها ما فكرتش (ولا باجي على بالها)",
-            "وبالي فيها بابا بالي مش ملكي (ولا باجي على بالها)",
-            "بلعب البخت (وبعدين؟)",
-            "سألتها ورفضتني",
-            "استغربتها، أومال فين هيبتي؟",
-            "حبيبي أنا بضحك على خيبتي",
-            "ياخي كنت عالثبات وهزتني",
-            "واللي فات ده كان سحري",
-            "مش باجي على بالها إن جات سيرتي",
-            "أنا بالي معاها مش ملكي",
-            "قالت كلام قبل أما تشوفني عارفني صعب ومش مفهوم",
-            "كلامي دبش ومش موزون أو بتحب حد والبال مشغول؟",
-            "ما شوفتوهاش ولا حد يلومني ملاك بريء ولا أنا مخدوع؟",
-            "هي توتر ولا أنا مهزوز أو آذاها حد والكل مرفوض؟",
-            "ولا إيه القصة، حبيبي فيدني اللي آذوك ياما، حبيبي سيبني",
-            "أخلي الجاي ورود وشموع يتغنالها وبصوت مسموع",
-            "ولا إيه القصة، حبيبي فيدني اللي آذوك ياما، حبيبي سيبني",
-            "أنسيك ماضي كله دموع ولا ماقدرش أسيبك موجوع",
-            "سحرتني ولا سحرتلي؟ (سحرتني ولا سحرتلي؟)",
-            "وعيون مش محتاجة تسحرلي (وعيون مش محتاج تسحرلي)",
-            "مش عايزة تجيبني بس جابتني (مش عايزة تجيبني بس جابتني)",
-            "ونسيتني وفي قصتي حبستني",
-            "والله ووقعت، بفكر فيك، كتير بالي عليك مشغول",
-            "وأنا بتصعب عليا حالي وأنا بكتبلك كلام معسول",
-            "بعيد عن عيني ويا عيني مع غيري ومش مبسوط",
-            "ده أنا أضيع عمري يا عمري وأحبك حب مش مشروط",
-            "لا تلاقي عندي وعود كدابة وكبرت على ولا شيء مضمون",
-            "كلامي على قد اللي معايا في الحب ماستناش مردود",
-            "بالراحة على قلبي المكسور اللي مشكلته إنه فيك مسحور",
-            "مين إختار اللي عينيك عملوه، ده مش ذنبي أنا صحيت محطوط",
-            "ولا إيه القصة، حبيبي فيدني اللي آذوك ياما، حبيبي سيبني",
-            "أخلي الجاي ورود وشموع يتغنالها وبصوت مسموع",
-            "ولا إيه القصة، حبيبي فيدني اللي آذوك ياما، حبيبي سيبني",
-            "أنسيك ماضي كله دموع ولا ماقدرش أسيبك موجوع",
-            "ولا إيه القصة، حبيبي فيدني اللي آذوك ياما، حبيبي سيبني",
-            "أخلّي الجاي ورود وشموع يتغنالها وبصوت مسموع",
-            "ولا إيه القصة، حبيب"
-        )
-        var flag : String = ""
-        val textViewsContainer: TextView = findViewById(R.id.Lyrics)
-        val myButton: Button = findViewById(R.id.Faye3Button)
-        val spoopyfyButton: Button = findViewById(R.id.spotifyFaye3Bgd)
-        var url = ""
-        var options = arrayOf("Faye3 + ana nagm","Faye3 + meennni leek", "Faye3 + wegz special")
-        spinnerVal.adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,options )
 
-        spinnerVal.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        val db = DBHelper(this)
+        val spinnerVal: Spinner = findViewById(R.id.spinnerFaye3)
+        val textViewsContainer: TextView = findViewById(R.id.Lyrics)
+        val favoriteButton: Button = findViewById(R.id.favoriteButton)
+        val backButton: Button = findViewById(R.id.BackToMain)
+        var currentSong: Song? = null
+
+
+
+        val songTitles = db.getAllSongTitles()
+        val optionsAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, songTitles)
+        spinnerVal.adapter = optionsAdapter
+        val selectedSongId = intent.getIntExtra("selectedSongId", -1)
+        if (selectedSongId != -1) {
+            val selectedSongTitle = intent.getStringExtra("selectedSongTitle")
+            val selectedSongLyrics = intent.getStringExtra("selectedSongLyrics")
+            val songTitles = db.getAllSongTitles()
+            val selectedSongIndex = songTitles.indexOf(selectedSongTitle)
+            if (selectedSongIndex != -1) {
+                spinnerVal.setSelection(selectedSongIndex)
+                textViewsContainer.text = selectedSongLyrics
+            }
+        }
+        spinnerVal.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                flag = options.get(p2)
-             }
+                val selectedSongTitle = songTitles[p2]
+                currentSong = db.getLyricsByTitle(selectedSongTitle)
+                if (currentSong!!.favorite == false){
+                    favoriteButton.text = "Add To favorite"
+                }else {
+                    favoriteButton.text = "Delete From Favorite"
+                }
+                val stringBuilder = StringBuilder()
+                for (line in currentSong!!.lyrics.split("\n")) {
+                    stringBuilder.append(line).append("\n")
+                }
+                textViewsContainer.text = stringBuilder.toString()
+            }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-        }
-        myButton.setOnClickListener{
-            val stringBuilder = StringBuilder()
-            if (flag == "Faye3 + ana nagm"){
-                for (line in anaNagm) {
-                    stringBuilder.append(line).append("\n")
-                }
-                textViewsContainer.text = stringBuilder.toString()
-                url = "https://open.spotify.com/track/6CU68VwcV10VfulVQMfj3X?si=e8e0727dc9f84e3b"
-                spoopyfyButton.text = "Ana Nagm On SPOTIFY faye3"
-            }else if (flag == "Faye3 + meennni leek"){
-                for (line in menniLeek) {
-                    stringBuilder.append(line).append("\n")
-                }
-                textViewsContainer.text = stringBuilder.toString()
-                url = "https://open.spotify.com/track/19ZrbiAIKOBKUYPXOHsLZu?si=41ae8ee18a1b43e7"
-                spoopyfyButton.text = "Menny Leek On SPOTIFY faye3"
-            }else if (flag == "Faye3 + wegz special"){
-                for (line in wegzBa5t) {
-                    stringBuilder.append(line).append("\n")
-                }
-                textViewsContainer.text = stringBuilder.toString()
-                url = "https://open.spotify.com/track/5kdlxZ5skOYY3VK8RlfEIZ?si=7be6f16457954c6b"
-                spoopyfyButton.text = "Wegz On SPOTIFY faye3"
-            }else {
-                textViewsContainer.text = "Choose something pwease"
-                url = ""
+                // ...
             }
         }
 
-        spoopyfyButton.setOnClickListener {
-            if (url != ""){
-                Log.d("Button Click", "Button clicked!")
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-
-                if (intent.resolveActivity(packageManager) != null) {
-                    startActivity(intent)
-                }else {
-                    Toast.makeText(this, "No web browser app found.", Toast.LENGTH_SHORT).show()
+        favoriteButton.setOnClickListener {
+            if (currentSong != null) {
+                currentSong = db.getLyricsByTitle(currentSong!!.title);
+                if (currentSong!!.favorite == false) {
+                    db.addToFavorites(currentSong!!.id, 1)
+                    favoriteButton.text = "Delete From Favorite"
+                    Toast.makeText(this, "Added to favorites!", Toast.LENGTH_SHORT).show()
+                } else {
+                    db.addToFavorites(currentSong!!.id, 0)
+                    favoriteButton.text = "Add To favorite"
+                    Toast.makeText(this, "Deleted from favorites!", Toast.LENGTH_SHORT).show()
                 }
-            }else {
-                Toast.makeText(this, "Choose one of the faye3 choices.", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        val deleteSongButton: Button = findViewById(R.id.DeleteSong)
+        deleteSongButton.setOnClickListener {
+            val selectedSongTitle = spinnerVal.selectedItem.toString()
+            val selectedSongId = db.getSongIdByTitle(selectedSongTitle)
+
+            // Delete the selected song from the database
+            db.deleteSongById(selectedSongId)
+
+            // Update the spinner
+            val updatedSongTitles = db.getAllSongTitles()
+            val updatedAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, updatedSongTitles)
+            spinnerVal.adapter = updatedAdapter
+
+            // Clear the lyrics TextView
+            textViewsContainer.text = ""
+
+            // Show a toast to indicate that the song has been deleted
+            Toast.makeText(this, "Song deleted: $selectedSongTitle", Toast.LENGTH_SHORT).show()
+        }
+
+        backButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, MainScreen::class.java)
+            startActivity(intent)
         }
     }
+
+    var flagBGColor = false;
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
      val inflater = menuInflater
      inflater.inflate(R.menu.menu_dark, menu)
      return super.onCreateOptionsMenu(menu)
      }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val textViewsContainer: TextView = findViewById(R.id.Lyrics)
         when (item.itemId) {
             R.id.Dark -> {
-                val rootView = findViewById<View>(android.R.id.content)
-                rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.app_background_color_new))
-                return true
+                if (!flagBGColor){
+                    flagBGColor = true
+                    val rootView = findViewById<View>(android.R.id.content)
+                    rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.app_background_color_new))
+                    ViewCompat.setBackgroundTintList(textViewsContainer , ContextCompat.getColorStateList(this, R.color.white))
+                    return true
+                }else {
+                    flagBGColor = false;
+                    val rootView = findViewById<View>(android.R.id.content)
+                    rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
+                    ViewCompat.setBackgroundTintList(textViewsContainer , ContextCompat.getColorStateList(this, R.color.Grey))
+                    return true
+                }
             }
             R.id.FSize ->{
                 var dialogVar = DialogFragmentText()

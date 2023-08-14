@@ -6,47 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="245dp"
-        android:layout_height="33dp"
-        android:background="@drawable/roundstyle"
-        android:text="Get your lyrics TO BE فايع"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078" />
-
     <Spinner
         android:id="@+id/spinnerFaye3"
-        android:layout_width="292dp"
-        android:layout_height="29dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="294dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintBottom_toBottomOf="@+id/favoriteButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.12" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="367dp"
-        android:layout_height="386dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="365dp"
+        android:layout_height="340dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Faye3Button">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/Lyrics"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/roundstyle"
-            android:backgroundTint="#CDDC39"
+            android:backgroundTint="#C3C3C3"
             android:lineSpacingExtra="8sp"
             android:text="Nothing to be faye3 yet."
             android:textAlignment="center"
@@ -56,31 +42,46 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/Faye3Button"
+        android:id="@+id/DeleteSong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#FF5722"
-        android:text="Get Faye3 Lyrics"
+        android:backgroundTint="#F44336"
+        android:text="Delete Song"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerFaye3"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.127"
         app:strokeColor="#000000"
         app:strokeWidth="2dp" />
 
     <Button
-        android:id="@+id/spotifyFaye3Bgd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#009688"
-        android:text="nothing interesting yet"
+        android:id="@+id/BackToMain"
+        android:layout_width="214dp"
+        android:layout_height="51dp"
+        android:backgroundTint="#DD1596"
+        android:text="back to the main screen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/DeleteSong"
+        app:layout_constraintVertical_bias="0.325"
         app:strokeColor="#000000"
         app:strokeWidth="2dp" />
+
+    <Button
+        android:id="@+id/favoriteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#101820"
+        android:text="Add To favorite"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

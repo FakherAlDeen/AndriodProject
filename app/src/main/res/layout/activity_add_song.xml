@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".AddSongActivity">
+
+    <EditText
+        android:id="@+id/titleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Song Title" />
+
+    <EditText
+        android:id="@+id/lyricsEditText"
+        android:layout_width="379dp"
+        android:layout_height="362dp"
+        android:hint="Song Lyrics"
+        android:inputType="textMultiLine"
+        android:lines="5" />
+
+    <CheckBox
+        android:id="@+id/favoriteCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add to Favorite" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Song" />
+
+    <Button
+        android:id="@+id/Return"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Return to main page" />
+</LinearLayout>
